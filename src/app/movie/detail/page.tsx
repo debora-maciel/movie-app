@@ -14,6 +14,7 @@ import save from '@/assets/icons/save.svg';
 import { useAppDispatch } from '@/hook';
 import Image from 'next/image';
 import moment from 'moment';
+import { Tooltip } from '@mui/material';
 
 const Detail = () => {
     const [movie, setMovie] = useState<MovieDetail>();
@@ -70,10 +71,12 @@ const Detail = () => {
                 </div>
             </div>
             <div className='w-full h-14 flex items-center justify-center text-black bg-white z-50 absolute'>
-                <div className='w-1/12 border-b border-b-4 border-cyan-500 h-full flex items-center justify-center'>Overview</div>
-                <div className='w-1/12 h-full flex items-center justify-center'>Media</div>
-                <div className='w-1/12 h-full flex items-center justify-center'>Fandom</div>
-                <div className='w-1/12 h-full flex items-center justify-center'>Share</div>
+                <div className='w-[40rem] grid grid-cols-4 text-sm h-full pt-4'>
+                    <div className='border-b border-b-4 border-cyan-500 h-full text-center'>Overview</div>
+                    <div className='h-full text-center'>Media</div>
+                    <div className='h-full text-center'>Fandom</div>
+                    <div className='h-full text-center'>Share</div>
+                </div>
             </div>
             <div className='w-11/12 mx-auto relative'>
                 <div className='w-full z-10 h-[40rem] absolute top-14 flex items-center justify-center px-10'>
@@ -100,9 +103,9 @@ const Detail = () => {
                             }
                             * {movie ? MoviesUtils.returnTimeConvert(movie.runtime) : '-'}
                         </div>
-                        <div className='w-3/6 mb-2 h-1/6 flex items-center'>
+                        <div className='w-[40rem] mb-2 h-1/6 flex items-center'>
                             <div className='flex items-center justify-between col-span-1 px-2'>
-                                <span className=''>
+                                <span>
                                     <PercentageCircle size='lg' value={MoviesUtils.returnRoundedPercentage(movie ? movie.vote_average : 0)} />
                                 </span>
                                 <span className='ml-4 font-semibold w-14'>
@@ -110,32 +113,40 @@ const Detail = () => {
                                 </span>
                             </div>
                             <div className='rounded-full flex defaultColor items-center justify-center w-16 h-16 mx-auto'>
-                                <Image
-                                    className='w-5'
-                                    alt={'menu_icon'}
-                                    src={menu}
-                                />
+                                <Tooltip title={'Menu'}>
+                                    <Image
+                                        className='w-5'
+                                        alt={'menu_icon'}
+                                        src={menu}
+                                    />
+                                </Tooltip>
                             </div>
                             <div className='rounded-full flex defaultColor items-center justify-center w-16 h-16 mx-auto'>
-                                <Image
-                                    className='w-5'
-                                    alt={'heart_icon'}
-                                    src={heart}
-                                />
+                                <Tooltip title={'Like'}>
+                                    <Image
+                                        className='w-5'
+                                        alt={'heart_icon'}
+                                        src={heart}
+                                    />
+                                </Tooltip>
                             </div>
                             <div className='rounded-full flex defaultColor items-center justify-center w-16 h-16 mx-auto'>
-                                <Image
-                                    className='w-5'
-                                    alt={'save'}
-                                    src={save}
-                                />
+                                <Tooltip title={'Save'}>
+                                    <Image
+                                        className='w-5'
+                                        alt={'save'}
+                                        src={save}
+                                    />
+                                </Tooltip>
                             </div>
                             <div className='rounded-full flex defaultColor items-center justify-center w-16 h-16 mx-auto'>
-                                <Image
-                                    className='w-5'
-                                    alt={'start'}
-                                    src={start}
-                                />
+                                <Tooltip title={'Favorite'}>
+                                    <Image
+                                        className='w-5'
+                                        alt={'start'}
+                                        src={start}
+                                    />
+                                </Tooltip>
                             </div>
                             <div className='flex px-2 items-center font-medium'>
                                 <Image
@@ -159,9 +170,6 @@ const Detail = () => {
                                 )) : <></>}
                         </div>
                     </div>
-                </div>
-                <div className='text-black w-full z-10 font-7xl bg-purple-800'>
-                    asopdkaodkas
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ const PercentageCircle = ({ value, size }: { value: number, size: string }) => {
     return (
         <div>
             {size == 'sm' ? (
-                <div className={`border-cyan-600 border border-4 absolute bottom-24 left-2 rounded-full ${color} border-2 bg-black w-10 p-2 h-10 flex items-center justify-center text-xs font-medium text-white`}
+                <div className={`mx-auto bottom-[10rem] sm:bottom-[1rem] md:bottom-36 lg:bottom-[7rem] border-cyan-8    00 border border-4 absolute left-2 rounded-full ${color} border-2 bg-black w-12 p-2 h-12 flex items-center justify-center text-xs font-medium text-white`}
                 >
                     {value}%
                 </div>

@@ -3,10 +3,10 @@
 import { Inter } from 'next/font/google';
 import NavBar from './components/navbar';
 import { Provider } from 'react-redux';
+import Loading from './shared/loading';
 import type { Metadata } from 'next';
 import { store } from '@/store';
 import './globals.css';
-import Loading from './shared/loading';
 
 const inter = Inter({ subsets: ['latin'] })
 

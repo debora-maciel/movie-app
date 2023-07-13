@@ -2,8 +2,8 @@ import { MovieDetail } from "../movie/models/movie-detail.model";
 import { Credit } from "../movie/models/credit.model";
 import axios from "axios";
 
-async function getMovies() {
-    const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
+async function getMovies(filter: string) {
+    const url = `https://api.themoviedb.org/3/movie/${filter}?language=en-US&page=1`;
 
     const config = {
         url: url,

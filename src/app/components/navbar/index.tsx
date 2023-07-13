@@ -7,8 +7,9 @@ import Link from "next/link";
 
 const NavBar = () => {
     return (
-        <div className="defaultColor w-full h-16 flex items-center justify-between shadow">
-            <div className='w-2/5 flex items-center pl-20 text-sm'>
+        <div className="defaultColor w-full flex h-16 items-center justify-between shadow">
+            <Image className='w-40rem mx-auto md:hidden' src={logo} alt={'logo_tmdb'} />
+            <div className='w-[40rem] hidden md:flex flex items-center pl-20 text-sm'>
                 <div className='w-2/6 flex items-center'>
                     <Image className='w-full' src={logo} alt={'logo_tmdb'} />
                 </div>
@@ -25,7 +26,7 @@ const NavBar = () => {
                     More
                 </div>
             </div>
-            <div className='w-2/5 flex items-center justify-center pr-20 text-sm'>
+            <div className='w-[40rem] hidden md:flex items-center justify-center pr-20 text-sm'>
                 <div className='w-1/6 flex items-center'>
                     <Image className='w-6 mx-auto' src={plus} alt={'plus_icon'} />
                 </div>

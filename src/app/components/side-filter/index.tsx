@@ -1,25 +1,49 @@
-
-
+import { selectFilter, setListFilter } from '@/store/features/movies/movieSlice';
+import ListItemButton from '@mui/material/ListItemButton';
+import { MenuItem, Select, Tooltip } from '@mui/material';
 import arrowright from '@/assets/icons/arrowright.svg';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import arrowdown from '@/assets/icons/arrowdown.svg';
+import filterIcon from '@/assets/icons/filter.svg';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import { useState, Fragment } from 'react';
+import { useSelector } from 'react-redux';
+import Drawer from '@mui/material/Drawer';
+import { useAppDispatch } from '@/hook';
+import List from '@mui/material/List';
+import Box from '@mui/material/Box';
 import Image from 'next/image';
 
-const SideFilter = () => {
-    const movieCount = 28;
-
+const MenuContent = ({ count, setFilter, filter }: { count: number, setFilter: (value: any) => void, filter: string }) => {
     return (
-        <div className="w-full h-full flex flex-col">
-            <div className="w-full shadow-xl border h-14 flex items-center justify-between px-4 rounded-lg bg-white font-bold">
+        <>
+            <div className="w-full mt-4 shadow-xl border h-[4rem] py-4 flex items-center justify-between px-7 rounded-lg bg-white font-bold">
                 Sort
                 <Image className='w-5' alt={'icon_arrowright'} src={arrowright} />
             </div>
-            <div className="w-full shadow-xl border h-14 flex items-center justify-between px-4 rounded-lg bg-white font-bold mt-4">
+            <div className="w-full mt-4 shadow-xl border h-[4rem] py-4 flex items-center justify-between px-4 rounded-lg bg-white font-bold">
+                <Select
+                    sx={{
+                        "& fieldset": {
+                            padding: '0',
+                            border: "none",
+                        }
+                    }}
+                    className='w-full font-bold' value={filter} onChange={(item) => { setFilter(item) }}>
+                    <MenuItem className='mx-10 mb-3 font-bold  px-6 py-2 rounded-full' value={'popular'}>Popular</MenuItem>
+                    <MenuItem className='mx-10 mb-3 font-bold px-6 py-2 rounded-full' value={'upcoming'}>Upcoming</MenuItem>
+                    <MenuItem className='mx-10 mb-3 font-bold  px-6 py-2 rounded-full' value={'top_rated'}>Top rated</MenuItem>
+                </Select>
+            </div>
+            <div className="w-full shadow-xl border h-[4rem] py-3 flex items-center justify-between px-7 rounded-lg bg-white font-bold mt-4">
                 Where to Watch
-                <span className='py-1 px-2 bg-gray-200 text-gray-700 rounded-lg'>{movieCount}</span>
+                <span className='py-1 px-2 bg-gray-200 text-gray-700 rounded-lg'>{count}</span>
                 <Image className='w-5' alt={'icon_arrowright'} src={arrowright} />
             </div>
             <div className="w-full shadow-xl border flex flex-col rounded-lg bg-white font-bold mt-4">
-                <div className='flex items-center justify-between h-14 px-4'>
+                <div className='flex items-center justify-between h-[4rem] px-4'>
                     Filters
                     <Image className='w-5' alt={'icon_arrowdown'} src={arrowdown} />
                 </div>
@@ -57,7 +81,7 @@ const SideFilter = () => {
                     </div>
                     <div className='flex items-center justify-between'>
                         <label className='text-gray-400 text-sm font-normal' htmlFor="toDate">to</label>
-                        <input className='border p-1 rounded text-sm' type={'date'} id="toDate" name="toDate"/>
+                        <input className='border p-1 rounded text-sm' type={'date'} id="toDate" name="toDate" />
                     </div>
                 </div>
                 <div className='w-full border-t p-4 flex flex-col font-light'>
@@ -70,7 +94,75 @@ const SideFilter = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
+    )
+}
+
+const SideFilter = () => {
+    const filter = useSelector(selectFilter);
+    const dispatch = useAppDispatch();
+    const movieCount = 28;
+
+    const [state, setState] = useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+    });
+
+    const toggleDrawer = (anchor: any, open: any) => (event: any) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setState({ ...state, [anchor]: open });
+    };
+
+    const setFilter = (value: any) => {
+        dispatch(setListFilter(value.target.value));
+    }
+
+    return (
+        <>
+            <div className="hidden w-full h-full lg:flex flex-col">
+                <MenuContent filter={filter} setFilter={setFilter} count={movieCount} />
+            </div>
+
+            <Tooltip title={'Filter'}>
+                <Image
+                    onClick={toggleDrawer('left', true)}
+                    alt={'icon_filter'}
+                    className='lg:hidden w-[3rem] cursor-pointer hover:bg-cyan-800 rounded-full shadow flex items-center justify-center p-2 bg-cyan-600'
+                    src={filterIcon} />
+            </Tooltip>
+            <div>
+                <Fragment key={'left'}>
+                    <Drawer
+                        anchor={'left'}
+                        open={state['left']}
+                        onClose={toggleDrawer('left', false)}>
+                        <Box
+                            sx={{ width: 250 }}
+                            role="presentation"
+                            onClick={toggleDrawer('left', false)}
+                            onKeyDown={toggleDrawer('left', false)}
+                        >
+                            <MenuContent filter={filter} setFilter={setFilter} count={movieCount} />
+                            <List>
+                                <ListItem disablePadding>
+                                    <ListItemButton>
+                                        <ListItemIcon>
+
+                                        </ListItemIcon>
+                                        <ListItemText />
+                                    </ListItemButton>
+                                </ListItem>
+                            </List>
+                            <Divider />
+                        </Box>
+                    </Drawer>
+                </Fragment>
+            </div>
+        </>
     )
 }
 
