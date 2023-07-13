@@ -4,7 +4,6 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { MovieDetail } from '../models/movie-detail.model';
 import PercentageCircle from '@/app/components/percentage';
 import movieService from '@/app/services/movie.service';
-import { Credit, Crew } from '../models/credit.model';
 import MoviesUtils from '@/utils/MoviesUtils';
 import start from '@/assets/icons/start.svg';
 import heart from '@/assets/icons/heart.svg';
@@ -38,18 +37,45 @@ const Detail = () => {
     }, [])
 
     return (
-        <div className='bg-blue-200 w-full h-full relative'>
+        <div className='w-full h-[93%] absolute overflow-x-hidden'>
+            <div
+                className={'absolute w-full bg-cover bg-no-repeat z-0 h-[44rem] brightness-[0.5] blur-[2.5px] top-0'}
+                style={{ backgroundImage: `url("${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path}")` }}>
+            </div>
+            <div className='mt-[44rem] absolute bg-white text-black h-[17rem] flex items-center max-w-full px-[6rem] mx-auto justify-center'>
+                <div
+                    className='mt-6 h-[15rem] max-w-[200rem] overflow-y-hidden overflow-x-scroll flex'>
+                    {movie?.crew != undefined ?
+                        movie?.crew.map((item, index) => (
+                            <div key={index} className={item.profile_path == null ? 'hidden' : ' h-full flex mx-2 shadow-md w-min flex-col'}>
+                                <picture className="w-[10rem] overflow-hidden h-[20rem] relative">
+                                    <source srcSet={`https://image.tmdb.org/t/p/w400${item.profile_path}`} type="image/svg" />
+                                    <source srcSet={`https://image.tmdb.org/t/p/w400${item.profile_path}`} type="image/jpg" />
+                                    <source srcSet={`https://image.tmdb.org/t/p/w400${item.profile_path}`} type="image/png" />
+                                    <img
+                                        className="rounded-lg absolute mx-auto"
+                                        src={`https://image.tmdb.org/t/p/w400${item.profile_path}`}
+                                        alt="Landscape picture"
+                                    />
+                                </picture>
+                                <p className='text-xs h-[6rem] border text-sm flex items-start pl-2 pt-2 font-bold text-black flex-col'>
+                                    {item.name}
+                                    <br />
+                                    <span className='font-light mt-2'>
+                                        {item.department}
+                                    </span>
+                                </p>
+                            </div>
+                        )) : <></>}
+                </div>
+            </div>
             <div className='w-full h-14 flex items-center justify-center text-black bg-white z-50 absolute'>
                 <div className='w-1/12 border-b border-b-4 border-cyan-500 h-full flex items-center justify-center'>Overview</div>
                 <div className='w-1/12 h-full flex items-center justify-center'>Media</div>
                 <div className='w-1/12 h-full flex items-center justify-center'>Fandom</div>
                 <div className='w-1/12 h-full flex items-center justify-center'>Share</div>
             </div>
-            <div
-                className={'absolute w-full bg-cover bg-no-repeat z-0 h-[45rem] brightness-[0.5] blur-[1.2px] top-0'}
-                style={{ backgroundImage: `url("${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path}")` }}>
-            </div>
-            <header className='w-full h-full'>
+            <div className='w-11/12 mx-auto relative'>
                 <div className='w-full z-10 h-[40rem] absolute top-14 flex items-center justify-center px-10'>
                     <div className='w-3/12 rounded-lg shadow-md h-5/6 mr-12 flex items-center justify-center'>
                         <picture className="">
@@ -130,11 +156,14 @@ const Detail = () => {
                                         <p className='text-sm text-white font-bold'>{item.name}</p>
                                         <p className='text-xs'>{item.job}</p>
                                     </div>
-                                )) : <>kkkkkkkkkkkkkkkkkkk</>}
+                                )) : <></>}
                         </div>
                     </div>
                 </div>
-            </header>
+                <div className='text-black w-full z-10 font-7xl bg-purple-800'>
+                    asopdkaodkas
+                </div>
+            </div>
         </div>
     )
 }
