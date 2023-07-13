@@ -1,14 +1,14 @@
 import axios from "axios";
 
 async function getMovies() {
-    const url = 'https://api.themoviedb.org/3/movie/changes?page=1';
+    const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
 
     const config = {
         url: url,
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer 4f298a53e552283bee957836a529baec'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZWRiZGFhMmRkNzRjZDI1MzhkZDhkZjY3YmU3NjMxZiIsInN1YiI6IjY0YWY2NDU1YTQxMGM4MDBhZjZhNGU3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zo_6DpYOU8ESxX74R6xYxFtTt8smR27nZz6jdpcJ1cQ'
         }
     }
 

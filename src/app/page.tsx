@@ -19,7 +19,7 @@ export default function Home() {
         <div className='w-1/6 h-full'>
           <SideFilter />
         </div>
-        <div className='w-5/6 bg-pink-900 ml-10 overflow-y-scroll h-full'>
+        <div className='w-5/6 ml-10 overflow-y-scroll h-full'>
           <List />
         </div>
       </header>
