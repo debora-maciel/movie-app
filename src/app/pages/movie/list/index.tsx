@@ -10,6 +10,25 @@ import MoviesUtils from '@/utils/MoviesUtils';
 const List = () => {
     const [movies, setMovies] = useState<any[]>([]);
 
+
+    const handlePercentageCircle = (value: number) => {
+        let color = value > 0 && value < 15 ? 'bg-red-600' :
+            value > 20 && value < 35 ? 'bg-orange-600' :
+                value > 30 && value < 60 ? 'bg-yellow-600' :
+                    value > 60 && value < 70 ? 'bg-lime-600' :
+                        value > 85 ? 'bg-lime-600' :
+                            'bg-green-700';
+
+        return (
+            <>
+                <div className={`absolute bottom-24 left-2 rounded-full ${color} border-2 bg-black w-10 p-2 h-10 flex items-center justify-center text-xs font-medium text-white`}
+                >
+                    {value}%
+                </div>
+            </>
+        )
+    }
+
     useEffect(() => {
         movieService
             .getMovies()
@@ -34,9 +53,7 @@ const List = () => {
                                 alt="Landscape picture"
                             />
                         </picture>
-                        <div className="absolute bottom-24 left-2 rounded-full border-2 bg-black w-10 p-2 h-10 flex items-center justify-center text-xs font-medium text-white">
-                            {Math.round(Number(movie.vote_average) * 100 / 10)}%
-                        </div>
+                        {handlePercentageCircle(MoviesUtils.returnRoundedPercentage(movie.vote_average))}
                         <div className="w-full p-4 font-bold text-base h-[6rem]">
                             <p className='h-4/5'>{movie.title}</p>
                             <p className='text-sm font-medium text-gray-500'>{MoviesUtils.returnMonthComplete(moment(movie.release_date).format('M'))} {moment(movie.release_date).format('D')}, {moment(movie.release_date).format('YYYY')}</p>

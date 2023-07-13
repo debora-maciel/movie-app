@@ -1,6 +1,5 @@
 
 function returnMonthComplete(month: string) {
-    console.log(month)
     switch (month) {
         case '1':
             return 'Jan';
@@ -31,8 +30,13 @@ function returnMonthComplete(month: string) {
     }
 }
 
+function returnRoundedPercentage(num: string) {
+    return Math.round(Number(num) * 100 / 10);
+}
+
 const MoviesUtils = {
-    returnMonthComplete
+    returnMonthComplete,
+    returnRoundedPercentage
 }
 
 export default MoviesUtils;
