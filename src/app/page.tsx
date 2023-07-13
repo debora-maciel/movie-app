@@ -6,8 +6,6 @@ import SideFilter from './components/side-filter';
 import List from './components/list';
 
 export default function Home() {
-  const state = useSelector(selectMovies);
-
   return (
     <main className="flex min-h-screen bg-white flex-col h-screen">
       <div className='pl-20 font-bold text-black h-16 mb-4 flex items-end text-2xl'>Popular Movies</div>

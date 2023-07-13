@@ -1,15 +1,19 @@
 'use client';
 
 import ellipsishorizontal from '@/assets/icons/ellipsishorizontal.svg';
+import { setMovieSelected } from '@/store/features/movies/movieSlice';
 import movieService from "../../services/movie.service";
 import MoviesUtils from '@/utils/MoviesUtils';
 import { useEffect, useState } from "react";
+import { useAppDispatch } from '@/hook';
 import Image from 'next/image';
 import Link from "next/link";
 import moment from 'moment';
 
 const List = () => {
     const [movies, setMovies] = useState<any[]>([]);
+
+    const dispatch = useAppDispatch();
 
     const handlePercentageCircle = (value: number) => {
         let color = value > 0 && value < 15 ? 'bg-red-600' :
@@ -27,6 +31,10 @@ const List = () => {
                 </div>
             </>
         )
+    }
+
+    const selectMovie = (movie: any) => {
+        dispatch(setMovieSelected(movie));
     }
 
     useEffect(() => {
@@ -56,9 +64,9 @@ const List = () => {
                         {handlePercentageCircle(MoviesUtils.returnRoundedPercentage(movie.vote_average))}
 
                         <div className="w-full p-4 font-bold text-base h-[6rem] hover:text-orange-600">
-                            <Link className='h-4/5' href={{
+                            <Link onClick={() => selectMovie(movie)} className='h-4/5' href={{
                                 pathname: '/movie/detail',
-                                query: { name: 'test' },
+                                query: { id: movie.id },
                             }}>
                                 {movie.title}
                             </Link>
