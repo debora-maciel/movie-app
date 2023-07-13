@@ -30,7 +30,7 @@ function returnMonthComplete(month: string) {
     }
 }
 
-function returnRoundedPercentage(num: string) {
+function returnRoundedPercentage(num: string | number) {
     return Math.round(Number(num) * 100 / 10);
 }
 

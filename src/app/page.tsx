@@ -1,7 +1,5 @@
 'use client';
 
-import { selectMovies } from '@/store/features/movies/movieSlice';
-import { useSelector, useDispatch } from 'react-redux';
 import SideFilter from './components/side-filter';
 import List from './components/list';
 
