@@ -1,6 +1,7 @@
 'use client';
 
 import { Inter } from 'next/font/google';
+import NavBar from './components/navbar';
 import { Provider } from 'react-redux';
 import type { Metadata } from 'next';
 import { store } from '@/store';
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <NavBar />
         <Provider store={store}>
           {children}
         </Provider>

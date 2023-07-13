@@ -3,6 +3,7 @@ import search from '@/assets/icons/search.svg';
 import logo from '@/assets/images/logo.svg';
 import plus from '@/assets/icons/plus.svg';
 import Image from 'next/image';
+import Link from "next/link";
 
 const NavBar = () => {
     return (
@@ -11,9 +12,9 @@ const NavBar = () => {
                 <div className='w-2/6 flex items-center'>
                     <Image className='w-full' src={logo} alt={'logo_tmdb'} />
                 </div>
-                <div className='w-1/6 text-center cursor-pointer link-hover'>
+                <Link className='w-1/6 text-center cursor-pointer link-hover' href={'/'}>
                     Movies
-                </div>
+                </Link>
                 <div className='w-1/6 text-center cursor-pointer link-hover'>
                     TV Shows
                 </div>
@@ -43,7 +44,7 @@ const NavBar = () => {
                     <Image className='w-6 mx-auto' src={search} alt={'search_icon'} />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
