@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import type { Metadata } from 'next';
 import { store } from '@/store';
 import './globals.css';
+import Loading from './shared/loading';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <NavBar />
         <Provider store={store}>
+          <Loading />
           {children}
         </Provider>
       </body>

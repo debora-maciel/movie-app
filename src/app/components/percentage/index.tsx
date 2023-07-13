@@ -1,5 +1,3 @@
-
-
 const PercentageCircle = ({ value, size }: { value: number, size: string }) => {
     let color = value > 0 && value < 15 ? 'bg-red-600' :
         value > 20 && value < 35 ? 'bg-orange-600' :

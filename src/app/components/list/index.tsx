@@ -1,7 +1,7 @@
 'use client';
 
 import ellipsishorizontal from '@/assets/icons/ellipsishorizontal.svg';
-import { setMovieSelected } from '@/store/features/movies/movieSlice';
+import { setLoading, setMovieSelected } from '@/store/features/movies/movieSlice';
 import movieService from "../../services/movie.service";
 import MoviesUtils from '@/utils/MoviesUtils';
 import PercentageCircle from '../percentage';
@@ -20,10 +20,12 @@ const List = () => {
     }
 
     useEffect(() => {
+        dispatch(setLoading(true));
         movieService
             .getMovies()
             .then((res: any) => {
                 setMovies(res.data.results);
+                dispatch(setLoading(false));
             })
     }, [])
 

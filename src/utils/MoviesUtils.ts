@@ -34,9 +34,19 @@ function returnRoundedPercentage(num: string | number) {
     return Math.round(Number(num) * 100 / 10);
 }
 
+function returnTimeConvert(minutes: number) {
+    var num = minutes;
+    var hours = (num / 60);
+    var rhours = Math.floor(hours);
+    var mins = (hours - rhours) * 60;
+    var rminutes = Math.round(mins);
+    return rhours + "h " + rminutes + " m";
+}
+
 const MoviesUtils = {
+    returnTimeConvert,
     returnMonthComplete,
-    returnRoundedPercentage
+    returnRoundedPercentage,
 }
 
 export default MoviesUtils;

@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const NavBar = () => {
     return (
-        <div className="navbar-default-color w-full h-16 flex items-center justify-between shadow">
+        <div className="defaultColor w-full h-16 flex items-center justify-between shadow">
             <div className='w-2/5 flex items-center pl-20 text-sm'>
                 <div className='w-2/6 flex items-center'>
                     <Image className='w-full' src={logo} alt={'logo_tmdb'} />
