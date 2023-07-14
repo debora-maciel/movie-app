@@ -1,13 +1,27 @@
 
 import search from '@/assets/icons/search.svg';
 import logo from '@/assets/images/logo.svg';
+import { Fragment, useState } from 'react';
 import plus from '@/assets/icons/plus.svg';
+import menu from '@/assets/icons/menu.svg';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import List from '@mui/material/List';
+import Drawer from '@mui/material/Drawer';
+import Box from '@mui/material/Box';
 import Image from 'next/image';
 import Link from "next/link";
+import { MenuPaper, Paper, badgeClasses } from '@mui/material';
 
 const NavBar = () => {
+    const [open, setOpenMenu] = useState(false);
+
     return (
-        <div className="defaultColor w-full flex h-16 items-center justify-between shadow">
+        <div className="defaultColor w-full flex h-16 items-center justify-between shadow bg-red-900">
+            <Image onClick={() => setOpenMenu(true)} className='w-[3rem] ml-[2rem] md:hidden hover:bg-bg-blue-900 rounded-full p-3' src={menu} alt={'menu_tmdb'} />
             <Image className='w-40rem mx-auto md:hidden' src={logo} alt={'logo_tmdb'} />
             <div className='w-[40rem] hidden md:flex flex items-center pl-20 text-sm'>
                 <div className='w-2/6 flex items-center'>
@@ -45,7 +59,49 @@ const NavBar = () => {
                     <Image className='w-6 mx-auto' src={search} alt={'search_icon'} />
                 </div>
             </div>
-        </div >
+
+            <Fragment key={'left'}>
+                <Drawer anchor={'left'} open={open} onClose={() => setOpenMenu(true)}>
+                    <Box sx={{ width: 250 }}
+                        role="presentation">
+                        <List>
+                            <ListItem key={'a'}>
+                                <ListItemButton>
+                                    <Image className='w-40rem mx-auto md:hidden' src={logo} alt={'logo_tmdb'} />
+                                </ListItemButton>
+                            </ListItem>
+                        </List>
+                        <Divider />
+                        <List>
+                            <ListItem>
+                                <ListItemText primary={'Movies'} />
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText primary={'TV Shows'} />
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText primary={'People'} />
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText primary={'More'} />
+                            </ListItem>
+                        </List>
+                        <Divider />
+                        <List>
+                            <ListItem>
+                                <ListItemText primary={'Movies'} />
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText primary={'Login'} />
+                            </ListItem>
+                            <ListItem>
+                                <ListItemText primary={'Join TMDB'} />
+                            </ListItem>
+                        </List>
+                    </Box>
+                </Drawer>
+            </Fragment>
+        </div>
     )
 }
 

@@ -41,7 +41,7 @@ const Detail = () => {
     return (
         <div className='w-full h-full absolute bg-black pb-[4rem]'>
             <div
-                className={'absolute w-full bg-cover bg-no-repeat z-0 scale-100	h-[120rem] md:h-[44rem] brightness-[0.5] blur-[2.5px] top-0'}
+                className={'absolute w-full bg-cover bg-no-repeat z-0 h-[120rem] md:h-[44rem] brightness-[0.3] top-0'}
                 style={{ backgroundImage: `url("${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path}")` }}>
             </div>
             <div className='mt-[100rem] pb-5 md:pb-2 md:mt-[44rem] absolute md:bg-white text-black h-[17rem] flex items-center max-w-full px-[6rem] mx-auto justify-center'>

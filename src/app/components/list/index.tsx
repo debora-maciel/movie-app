@@ -28,7 +28,7 @@ const List = () => {
     }, [filter])
 
     return (
-        <div className="w-full h-full grid sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-5 gap-6 pr-2">
+        <div className="w-full h-full grid 2xl:grid-cols-5  sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 gap-6 pr-2">
             {
                 movies.length > 0 && movies.map((movie, index) => (
                     <div key={index} className="h-min shadow-md rounded-lg flex flex-col relative bg-white">
