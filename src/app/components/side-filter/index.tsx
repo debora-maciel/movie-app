@@ -1,18 +1,12 @@
 import { selectFilter, setListFilter } from '@/store/features/movies/movieSlice';
-import ListItemButton from '@mui/material/ListItemButton';
 import { MenuItem, Select, Tooltip } from '@mui/material';
 import arrowright from '@/assets/icons/arrowright.svg';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import arrowdown from '@/assets/icons/arrowdown.svg';
 import filterIcon from '@/assets/icons/filter.svg';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
 import { useState, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import Drawer from '@mui/material/Drawer';
 import { useAppDispatch } from '@/hook';
-import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 import Image from 'next/image';
 
@@ -86,11 +80,11 @@ const MenuContent = ({ count, setFilter, filter }: { count: number, setFilter: (
                 </div>
                 <div className='w-full border-t p-4 flex flex-col font-light'>
                     <div className='mb-2 font-medium'>Genres</div>
-                    <div className='mb-1 flex flex-1 items-center justify-evenly flex-wrap'>
-                        <div className='w-auto rounded-full border border-black px-5 py-2 font-medium'>Action</div>
-                        <div className='rounded-full border border-black px-5 py-2 font-medium'>Adventure</div>
-                        <div className='rounded-full border border-black px-5 py-2 mt-3 font-medium'>Animation</div>
-                        <div className='rounded-full border border-black px-5 py-2 mt-3 font-medium'>Comedy</div>
+                    <div className='mb-1 flex flex-1 items-center justify-evenly flex-wrap gap-2'>
+                        <div className='w-auto rounded-full hover:bg-cyan-400 hover:text-cyan-900 hover:border-purple-200 pt-1 cursor-pointer border border-black px-5 h-[2rem] font-medium'>Action</div>
+                        <div className='rounded-full hover:bg-cyan-400 hover:text-cyan-900 hover:border-purple-200 pt-1 cursor-pointer border border-black px-5 h-[2rem] font-medium'>Adventure</div>
+                        <div className='rounded-full hover:bg-cyan-400 hover:text-cyan-900 hover:border-purple-200 pt-1 cursor-pointer border border-black px-5 h-[2rem] font-medium'>Animation</div>
+                        <div className='rounded-full hover:bg-cyan-400 hover:text-cyan-900 hover:border-purple-200 pt-1 cursor-pointer border border-black px-5 h-[2rem] font-medium'>Comedy</div>
                     </div>
                 </div>
             </div>
@@ -147,17 +141,6 @@ const SideFilter = () => {
                             onKeyDown={toggleDrawer('left', false)}
                         >
                             <MenuContent filter={filter} setFilter={setFilter} count={movieCount} />
-                            <List>
-                                <ListItem disablePadding>
-                                    <ListItemButton>
-                                        <ListItemIcon>
-
-                                        </ListItemIcon>
-                                        <ListItemText />
-                                    </ListItemButton>
-                                </ListItem>
-                            </List>
-                            <Divider />
                         </Box>
                     </Drawer>
                 </Fragment>
