@@ -1,20 +1,18 @@
 
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 import search from '@/assets/icons/search.svg';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
 import logo from '@/assets/images/logo.svg';
 import { Fragment, useState } from 'react';
 import plus from '@/assets/icons/plus.svg';
 import menu from '@/assets/icons/menu.svg';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import List from '@mui/material/List';
 import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 import Image from 'next/image';
 import Link from "next/link";
-import { MenuPaper, Paper, badgeClasses } from '@mui/material';
 
 const NavBar = () => {
     const [open, setOpenMenu] = useState(false);
