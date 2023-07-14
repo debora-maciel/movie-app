@@ -21,7 +21,7 @@ const NavBar = () => {
 
     return (
         <div className="defaultColor w-full flex h-16 items-center justify-between shadow bg-red-900">
-            <Image onClick={() => setOpenMenu(true)} className='w-[3rem] ml-[2rem] md:hidden hover:bg-bg-blue-900 rounded-full p-3' src={menu} alt={'menu_tmdb'} />
+            <Image onClick={() => setOpenMenu(true)} className='w-[3rem] ml-[2rem] md:hidden hover:bg-blue-900 rounded-full p-3' src={menu} alt={'menu_tmdb'} />
             <Image className='w-40rem mx-auto md:hidden' src={logo} alt={'logo_tmdb'} />
             <div className='w-[40rem] hidden md:flex flex items-center pl-20 text-sm'>
                 <div className='w-2/6 flex items-center'>
@@ -66,8 +66,9 @@ const NavBar = () => {
                         role="presentation">
                         <List>
                             <ListItem key={'a'}>
-                                <ListItemButton>
-                                    <Image className='w-40rem mx-auto md:hidden' src={logo} alt={'logo_tmdb'} />
+                                <ListItemButton className='flex items-center justify-between'>
+                                    <Image onClick={() => setOpenMenu(false)} className='w-[10rem] mx-auto mr-3' src={logo} alt={'logo_tmdb'} />
+                                    <Image onClick={() => setOpenMenu(false)} className='w-[2rem] bg-cyan-900 rounded-full p-[6px]' src={menu} alt={'menu_tmdb'} />
                                 </ListItemButton>
                             </ListItem>
                         </List>
