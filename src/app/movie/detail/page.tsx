@@ -39,7 +39,7 @@ const Detail = () => {
     }, [])
 
     return (
-        <div className='w-full h-full absolute bg-black pb-[4rem]'>
+        <div className='w-full h-full absolute bg-white pb-[4rem]'>
             <div
                 className={'absolute w-full bg-cover bg-no-repeat z-0 h-[120rem] md:h-[44rem] brightness-[0.3] top-0'}
                 style={{ backgroundImage: `url("${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path}")` }}>

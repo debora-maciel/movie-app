@@ -73,7 +73,9 @@ const NavBar = () => {
                         <Divider />
                         <List>
                             <ListItem>
-                                <ListItemText primary={'Movies'} />
+                                <Link href={'/'}>
+                                    <ListItemText primary={'Movies'} />
+                                </Link>
                             </ListItem>
                             <ListItem>
                                 <ListItemText primary={'TV Shows'} />
