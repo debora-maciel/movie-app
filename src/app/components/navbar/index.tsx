@@ -18,23 +18,23 @@ const NavBar = () => {
     const [open, setOpenMenu] = useState(false);
 
     return (
-        <div className="defaultColor w-full flex h-16 items-center justify-between shadow bg-red-900">
-            <Image onClick={() => setOpenMenu(true)} className='w-[3rem] ml-[2rem] md:hidden hover:bg-blue-900 rounded-full p-3' src={menu} alt={'menu_tmdb'} />
+        <div className="defaultColor w-full flex h-16 items-center justify-between shadow min-w-[20rem]">
+            <Image onClick={() => setOpenMenu(true)} className='w-[3rem] md:hidden hover:bg-blue-900 rounded-full p-3' src={menu} alt={'menu_tmdb'} />
             <Image className='w-40rem mx-auto md:hidden' src={logo} alt={'logo_tmdb'} />
             <div className='w-[40rem] hidden md:flex flex items-center pl-20 text-sm'>
                 <div className='w-2/6 flex items-center'>
                     <Image className='w-full' src={logo} alt={'logo_tmdb'} />
                 </div>
-                <Link className='w-1/6 text-center cursor-pointer link-hover' href={'/'}>
+                <Link className='w-2/5 text-center cursor-pointer link-hover' href={'/'}>
                     Movies
                 </Link>
-                <div className='w-1/6 text-center cursor-pointer link-hover'>
+                <div className='w-2/5 sm:bg-red-400 md:bg-transparent text-center cursor-pointer link-hover'>
                     TV Shows
                 </div>
-                <div className='w-1/6 text-center cursor-pointer link-hover'>
+                <div className='w-2/5 text-center cursor-pointer link-hover'>
                     People
                 </div>
-                <div className='w-1/6 text-center cursor-pointer link-hover'>
+                <div className='w-1/5 text-center cursor-pointer link-hover'>
                     More
                 </div>
             </div>
@@ -50,7 +50,7 @@ const NavBar = () => {
                 <div className='w-1/6 text-center cursor-pointer link-hover'>
                     Login
                 </div>
-                <div className='w-1/6 text-center cursor-pointer link-hover'>
+                <div className='w-2/5 lg:w-1/6 text-center cursor-pointer link-hover'>
                     Join TMDB
                 </div>
                 <div className='w-1/6 text-center'>
@@ -65,7 +65,7 @@ const NavBar = () => {
                         <List>
                             <ListItem key={'a'}>
                                 <ListItemButton className='flex items-center justify-between'>
-                                    <Image onClick={() => setOpenMenu(false)} className='w-[10rem] mx-auto mr-3' src={logo} alt={'logo_tmdb'} />
+                                    <Image onClick={() => setOpenMenu(false)} className='w-[10rem] mx-auto' src={logo} alt={'logo_tmdb'} />
                                     <Image onClick={() => setOpenMenu(false)} className='w-[2rem] bg-cyan-900 rounded-full p-[6px]' src={menu} alt={'menu_tmdb'} />
                                 </ListItemButton>
                             </ListItem>

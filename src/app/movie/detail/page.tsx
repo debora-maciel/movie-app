@@ -39,14 +39,14 @@ const Detail = () => {
     }, [])
 
     return (
-        <div className='w-full h-full absolute bg-white pb-[4rem]'>
+        <div className='w-full h-[70rem] md:h-[62rem] absolute pb-[4rem]'>
             <div
-                className={'absolute w-full bg-cover bg-no-repeat z-0 h-[120rem] md:h-[44rem] brightness-[0.3] top-0'}
+                className={'absolute w-full bg-cover bg-no-repeat z-0 h-[120rem] md:h-[44rem] brightness-[0.3] top-0]'}
                 style={{ backgroundImage: `url("${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path}")` }}>
             </div>
-            <div className='mt-[100rem] pb-5 md:pb-2 md:mt-[44rem] absolute md:bg-white text-black h-[17rem] flex items-center max-w-full px-[6rem] mx-auto justify-center'>
+            <div className='min-w-[20rem] mt-[100rem] pb-5 md:pb-2 md:mt-[44rem] absolute md:bg-white text-black h-[17rem] flex items-center max-w-full px-[6rem] mx-auto justify-center'>
                 <div
-                    className='mt-6 h-[15rem] max-w-[200rem] overflow-y-hidden overflow-x-scroll flex'>
+                    className='mt-6 h-[15rem] max-w-[100rem] overflow-y-hidden overflow-x-scroll flex'>
                     {movie?.crew != undefined ?
                         movie?.crew.map((item, index) => (
                             <div key={index} className={item.profile_path == null ? 'hidden' : ' h-full bg-white flex mx-2 shadow-md w-min flex-col'}>
@@ -55,9 +55,9 @@ const Detail = () => {
                                     <source srcSet={`https://image.tmdb.org/t/p/w400${item.profile_path}`} type="image/jpg" />
                                     <source srcSet={`https://image.tmdb.org/t/p/w400${item.profile_path}`} type="image/png" />
                                     <img
-                                        className="rounded-lg absolute mx-auto"
+                                        className="rounded-lg absolute mx-auto p-2"
                                         src={`https://image.tmdb.org/t/p/w400${item.profile_path}`}
-                                        alt="Landscape picture"
+                                        alt="profile"
                                     />
                                 </picture>
                                 <p className='text-xs h-[6rem] border text-sm flex items-start pl-2 pt-2 font-bold text-black flex-col'>
@@ -79,16 +79,16 @@ const Detail = () => {
                     <div className='h-full text-center'>Share</div>
                 </div>
             </div>
-            <div className='w-11/12 mx-auto relative bg-orange-200 mt-8 md:mt-0'>
+            <div className='mx-auto relative mt-8 md:mt-0'>
                 <div className='w-full z-10 h-[40rem] absolute md:top-14 top-20 flex flex-col md:flex-row md:items-center md:justify-center px-10'>
-                    <div className='md:w-3/12 rounded-lg shadow-md h-5/6 mr-12 flex items-center justify-center'>
+                    <div className='lg:flex md:hidden rounded-lg shadow-md h-5/6 flex items-center justify-center'>
                         <picture className="">
                             <source srcSet={`https://image.tmdb.org/t/p/w400${movie?.poster_path}`} type="image/svg" />
                             <source srcSet={`https://image.tmdb.org/t/p/w400${movie?.poster_path}`} type="image/jpg" />
                             <img
                                 className="w-full rounded-lg"
                                 src={`https://image.tmdb.org/t/p/w400${movie?.poster_path}`}
-                                alt="Landscape picture"
+                                alt="picture"
                             />
                         </picture>
                     </div>
@@ -104,8 +104,8 @@ const Detail = () => {
                             }
                             * {movie ? MoviesUtils.returnTimeConvert(movie.runtime) : '-'}
                         </div>
-                        <div className='w-[38rem] mb-2 h-1/6 flex items-center'>
-                            <div className='flex items-center justify-between md:w-auto px-2 overflow-hidden'>
+                        <div className='mb-2 h-1/6 flex items-center'>
+                            <div className='flex items-center justify-between md:w-auto overflow-hidden'>
                                 <span>
                                     <PercentageCircle size='lg' value={MoviesUtils.returnRoundedPercentage(movie ? movie.vote_average : 0)} />
                                 </span>
@@ -113,8 +113,8 @@ const Detail = () => {
                                     User Score
                                 </span>
                             </div>
-                            <div className='pt-2 mx-10 grid grid-cols-2 gap-2 md:hidden'>
-                                <div className='rounded-full flex defaultColor items-center w-14 h-14 flex-wrap justify-center md:w-16 md:h-16 mx-auto'>
+                            <div className='pt-2 flex flex-wrap md:hidden'>
+                                <div className='rounded-full flex defaultColor items-center w-12 h-12 flex-wrap justify-center md:w-16 md:h-16 mx-2'>
                                     <Tooltip title={'Menu'}>
                                         <Image
                                             className='w-5'
@@ -123,7 +123,7 @@ const Detail = () => {
                                         />
                                     </Tooltip>
                                 </div>
-                                <div className='rounded-full flex defaultColor items-center w-14 h-14 flex-wrap justify-center md:w-16 md:h-16 mx-auto'>
+                                <div className='rounded-full flex defaultColor items-center w-12 h-12 flex-wrap justify-center md:w-16 md:h-16 mr-1'>
                                     <Tooltip title={'Like'}>
                                         <Image
                                             className='w-5'
@@ -132,7 +132,7 @@ const Detail = () => {
                                         />
                                     </Tooltip>
                                 </div>
-                                <div className='rounded-full flex defaultColor items-center w-14 h-14 flex-wrap justify-center md:w-16 md:h-16 mx-auto'>
+                                <div className='rounded-full flex defaultColor items-center mx-1 w-12 h-12 flex-wrap justify-center md:w-16 md:h-16 mr-1'>
                                     <Tooltip title={'Save'}>
                                         <Image
                                             className='w-5'
@@ -141,7 +141,7 @@ const Detail = () => {
                                         />
                                     </Tooltip>
                                 </div>
-                                <div className='rounded-full flex defaultColor items-center w-14 h-14 flex-wrap justify-center md:w-16 md:h-16 mx-auto'>
+                                <div className='rounded-full flex defaultColor items-center mx-1 w-12 h-12 flex-wrap justify-center md:w-16 md:h-16'>
                                     <Tooltip title={'Favorite'}>
                                         <Image
                                             className='w-5'
@@ -153,7 +153,7 @@ const Detail = () => {
                             </div>
                             <div className='flex px-2 items-center font-medium'>
                                 <Image
-                                    className='w-5 mr-3'
+                                    className='w-5'
                                     alt={'play'}
                                     src={play}
                                 />
