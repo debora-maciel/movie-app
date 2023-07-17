@@ -138,7 +138,7 @@ const Detail = () => {
                                             </>
                                             :
                                             <div className='pt-2'>
-                                                <Skeleton variant="text" width={100} height={150} />
+                                                <Skeleton variant="circular" width={80} height={80} />
                                             </div>
                                     }
                                 </span>
