@@ -26,9 +26,9 @@ const MenuContent = ({ count, setFilter, filter }: { count: number, setFilter: (
                         }
                     }}
                     className='w-full font-bold' value={filter} onChange={(item) => { setFilter(item) }}>
-                    <MenuItem className='mx-10 mb-3 font-bold  px-6 py-2 rounded-full' value={'popular'}>Popular</MenuItem>
-                    <MenuItem className='mx-10 mb-3 font-bold px-6 py-2 rounded-full' value={'upcoming'}>Upcoming</MenuItem>
-                    <MenuItem className='mx-10 mb-3 font-bold  px-6 py-2 rounded-full' value={'top_rated'}>Top rated</MenuItem>
+                    <MenuItem className='mb-3 font-bold  px-6 py-2' value={'popular'}>Popular</MenuItem>
+                    <MenuItem className='mb-3 font-bold px-6 py-2' value={'upcoming'}>Upcoming</MenuItem>
+                    <MenuItem className='mb-3 font-bold  px-6 py-2' value={'top_rated'}>Top rated</MenuItem>
                 </Select>
             </div>
             <div className="w-full shadow-xl border h-[4rem] py-3 flex items-center justify-between px-7 rounded-lg bg-white font-bold mt-4">
