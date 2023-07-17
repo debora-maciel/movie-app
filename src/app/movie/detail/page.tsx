@@ -148,8 +148,8 @@ const Detail = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className='pt-2 flex flex-wrap md:hidden'>
-                                <div className='rounded-full flex defaultColor items-center w-12 h-12 flex-wrap justify-center md:w-16 md:h-16 mx-2'>
+                            <div className='pt-2 flex flex-wrap '>
+                                <div className='rounded-full flex defaultColor items-center w-12 h-12 flex-wrap justify-center md:w-14 md:h-14 mx-2'>
                                     <Tooltip title={'Menu'}>
                                         <Image
                                             className='w-5'
@@ -158,7 +158,7 @@ const Detail = () => {
                                         />
                                     </Tooltip>
                                 </div>
-                                <div className='rounded-full flex defaultColor items-center w-12 h-12 flex-wrap justify-center md:w-16 md:h-16 mr-1'>
+                                <div className='rounded-full flex defaultColor items-center w-12 h-12 flex-wrap justify-center md:w-14 md:h-14 mr-1'>
                                     <Tooltip title={'Like'}>
                                         <Image
                                             className='w-5'
@@ -167,7 +167,7 @@ const Detail = () => {
                                         />
                                     </Tooltip>
                                 </div>
-                                <div className='rounded-full flex defaultColor items-center mx-1 w-12 h-12 flex-wrap justify-center md:w-16 md:h-16 mr-1'>
+                                <div className='rounded-full flex defaultColor items-center mx-1 w-12 h-12 flex-wrap justify-center md:w-14 md:h-14 mr-1'>
                                     <Tooltip title={'Save'}>
                                         <Image
                                             className='w-5'
@@ -176,7 +176,7 @@ const Detail = () => {
                                         />
                                     </Tooltip>
                                 </div>
-                                <div className='rounded-full flex defaultColor items-center mx-1 w-12 h-12 flex-wrap justify-center md:w-16 md:h-16'>
+                                <div className='rounded-full flex defaultColor items-center mx-1 w-12 h-12 flex-wrap justify-center md:w-14 md:h-14'>
                                     <Tooltip title={'Favorite'}>
                                         <Image
                                             className='w-5'
