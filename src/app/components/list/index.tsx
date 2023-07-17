@@ -11,6 +11,7 @@ import { useAppDispatch } from '@/hook';
 import Image from 'next/image';
 import Link from "next/link";
 import moment from 'moment';
+import Skeleton from '@mui/material/Skeleton';
 
 const List = () => {
     const [movies, setMovies] = useState<any[]>([]);
@@ -27,40 +28,47 @@ const List = () => {
             })
     }, [filter])
 
-    return (
-        <div className="w-full h-full grid 2xl:grid-cols-5  sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 gap-6 pr-2">
-            {
-                movies.length > 0 && movies.map((movie, index) => (
-                    <div key={index} className="h-min shadow-md rounded-lg flex flex-col relative bg-white">
-                        <Image
-                            className='absolute shadow-xl right-1 top-1 rounded-full w-11 h-11 flex items-center justify-center w-10 h-10 mx-auto'
-                            src={ellipsishorizontal} alt={'ellipsishorizontal_icon'} />
-                        <picture className="">
-                            <source srcSet={`https://image.tmdb.org/t/p/w400${movie.poster_path}`} type="image/svg" />
-                            <source srcSet={`https://image.tmdb.org/t/p/w400${movie.poster_path}`} type="image/jpg" />
-                            <img
-                                className="w-[25rem] rounded-lg border-cyan-700 border-b border-b-4"
-                                src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
-                                alt="Landscape picture"
-                            />
-                        </picture>
-                        <div>
-                            <PercentageCircle
-                                value={MoviesUtils.returnRoundedPercentage(movie.vote_average)}
-                                size='sm'
-                            />
-                        </div>
-
-                        <div className="w-full px-3 pt-1 font-bold min-h-[6rem] h-min hover:text-orange-600">
-                            <Link className='h-4/5' href={{
-                                pathname: '/movie/detail',
-                                query: { id: movie.id },
-                            }}>
-                                {movie.title}
-                            </Link>
-                            <p className='text-sm font-medium text-gray-500'>{MoviesUtils.returnMonthComplete(moment(movie.release_date).format('M'))} {moment(movie.release_date).format('D')}, {moment(movie.release_date).format('YYYY')}</p>
-                        </div>
+    return movies.length > 0 ? (
+        <div className="w-full h-full grid 2xl:grid-cols-5 sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 gap-6 pr-2">
+            {movies.map((movie, index) => (
+                <div key={index} className="h-min shadow-md rounded-lg flex flex-col relative bg-white">
+                    <Image
+                        className='absolute shadow-xl right-1 top-1 rounded-full w-11 h-11 flex items-center justify-center w-10 h-10 mx-auto'
+                        src={ellipsishorizontal} alt={'ellipsishorizontal_icon'} />
+                    <picture className="">
+                        <source srcSet={`https://image.tmdb.org/t/p/w400${movie.poster_path}`} type="image/svg" />
+                        <source srcSet={`https://image.tmdb.org/t/p/w400${movie.poster_path}`} type="image/jpg" />
+                        <img
+                            className="w-[25rem] rounded-lg border-cyan-700 border-b border-b-4"
+                            src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
+                            alt="Landscape picture"
+                        />
+                    </picture>
+                    <div>
+                        <PercentageCircle
+                            value={MoviesUtils.returnRoundedPercentage(movie.vote_average)}
+                            size='sm'
+                        />
                     </div>
+
+                    <div className="w-full px-3 pt-1 font-bold min-h-[6rem] h-min hover:text-orange-600">
+                        <Link className='h-4/5' href={{
+                            pathname: '/movie/detail',
+                            query: { id: movie.id },
+                        }}>
+                            {movie.title}
+                        </Link>
+                        <p className='text-sm font-medium text-gray-500'>{MoviesUtils.returnMonthComplete(moment(movie.release_date).format('M'))} {moment(movie.release_date).format('D')}, {moment(movie.release_date).format('YYYY')}</p>
+                    </div>
+                </div>
+            ))
+            }
+        </div>
+    ) : (
+        <div className="w-full h-full grid 2xl:grid-cols-5 sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 gap-6 pr-2">
+            {
+                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(item => (
+                    <Skeleton key={item} animation="wave" style={{ borderRadius: 15 }} variant="rounded" width={250} height={400} />
                 ))
             }
         </div>

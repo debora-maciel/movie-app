@@ -6,7 +6,12 @@ import { useSelector } from 'react-redux';
 const Loading = () => {
     const loading = useSelector(selectLoading);
 
-    return ''
+    return <Backdrop
+        sx={{ color: '#fff', zIndex: 99 }}
+        open={loading}
+    >
+        <CircularProgress color="inherit" />
+    </Backdrop>
 }
 
 export default Loading;

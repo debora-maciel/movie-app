@@ -41,10 +41,15 @@ const Detail = () => {
 
     return (
         <div className='w-full h-[70rem] md:h-[62rem] absolute pb-[4rem]'>
-            <div
-                className={'absolute w-full bg-cover bg-no-repeat z-0 h-[120rem] md:h-[44rem] brightness-[0.3] top-0]'}
-                style={{ backgroundImage: `url("${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path}")` }}>
-            </div>
+            {movie?.backdrop_path ?
+                <div
+                    className={'absolute w-full bg-cover bg-no-repeat z-0 h-[120rem] md:h-[44rem] brightness-[0.3] top-0]'}
+                    style={{ backgroundImage: `url("${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path}")` }}>
+                </div>
+                :
+                <div className={'absolute w-full bg-slate-100 z-0 h-[120rem] md:h-[44rem] top-0]'}>
+                </div>
+            }
             <div className='min-w-[20rem] mt-[100rem] pb-5 md:pb-2 md:mt-[44rem] absolute md:bg-white text-black h-[17rem] flex items-center max-w-full px-[6rem] mx-auto justify-center'>
                 <div
                     className='mt-6 h-[15rem] max-w-[100rem] overflow-y-hidden overflow-x-scroll flex'>
@@ -111,26 +116,37 @@ const Detail = () => {
                             {movie?.release_date ? moment(movie?.release_date).format("MM/DD/YYYY") :
                                 <Skeleton variant="text" width={500} height={50} />
                             }
-                            (TR) * {movie?.genres.map((genre) => (
-                                <span className='px-2' key={genre.id}>{genre.name}</span>))
-                            }
-                            * {movie ? MoviesUtils.returnTimeConvert(movie.runtime) : '-'}
+
+                            {movie?.genres && (
+                                <>
+                                    {'('}TR{')'} *
+                                    {movie?.genres.map((genre) => (
+                                        <span className='px-2' key={genre.id}>{genre.name}</span>))}
+                                    * {movie ? MoviesUtils.returnTimeConvert(movie.runtime) : '-'}
+                                </>
+                            )}
+
                         </div>
                         <div className='mb-2 h-1/6 flex items-center'>
                             <div className='flex items-center justify-between md:w-auto overflow-hidden'>
                                 <span>
                                     {
                                         movie?.vote_average ?
-                                            <PercentageCircle size='lg' value={MoviesUtils.returnRoundedPercentage(movie ? movie.vote_average : 0)} />
+                                            <>
+                                                <PercentageCircle size='lg' value={MoviesUtils.returnRoundedPercentage(movie ? movie.vote_average : 0)} />
+
+                                            </>
                                             :
                                             <div className='pt-2'>
                                                 <Skeleton variant="text" width={100} height={150} />
                                             </div>
                                     }
                                 </span>
-                                <span className='ml-4 font-semibold w-14'>
-                                    User Score
-                                </span>
+                                {movie?.vote_average && (
+                                    <span className='ml-4 font-semibold w-14'>
+                                        User Score
+                                    </span>
+                                )}
                             </div>
                             <div className='pt-2 flex flex-wrap md:hidden'>
                                 <div className='rounded-full flex defaultColor items-center w-12 h-12 flex-wrap justify-center md:w-16 md:h-16 mx-2'>
@@ -171,12 +187,16 @@ const Detail = () => {
                                 </div>
                             </div>
                             <div className='flex px-2 items-center font-medium'>
-                                <Image
-                                    className='w-5'
-                                    alt={'play'}
-                                    src={play}
-                                />
-                                Play Trailer
+                                {movie?.vote_average && (
+                                    <>
+                                        <Image
+                                            className='w-5'
+                                            alt={'play'}
+                                            src={play}
+                                        />
+                                        Play Trailer
+                                    </>
+                                )}
                             </div>
                         </div>
                         <div className='mb-4 italic text-gray-200 text-base mt-4'>
