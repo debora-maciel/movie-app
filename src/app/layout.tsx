@@ -22,6 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head><title>Movie App</title></head>
       <body className={inter.className}>
         <NavBar />
         <Provider store={store}>
