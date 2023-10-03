@@ -10,7 +10,7 @@ async function getMovies(filter: string) {
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZWRiZGFhMmRkNzRjZDI1MzhkZDhkZjY3YmU3NjMxZiIsInN1YiI6IjY0YWY2NDU1YTQxMGM4MDBhZjZhNGU3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zo_6DpYOU8ESxX74R6xYxFtTt8smR27nZz6jdpcJ1cQ'
+            // Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZWRiZGFhMmRkNzRjZDI1MzhkZDhkZjY3YmU3NjMxZiIsInN1YiI6IjY0YWY2NDU1YTQxMGM4MDBhZjZhNGU3NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zo_6DpYOU8ESxX74R6xYxFtTt8smR27nZz6jdpcJ1cQ'
         }
     }
 
